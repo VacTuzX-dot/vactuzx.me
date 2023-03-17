@@ -12,7 +12,7 @@ module.exports = {
           DEFAULT: '#101010',
         },
         'indigo': {
-          DEFAULT: '#4e3dfd',
+          DEFAULT: '#ff0000',
         },
         'card': {
           DEFAULT: '#151515',

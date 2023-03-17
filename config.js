@@ -1,31 +1,31 @@
 module.exports = {
-    discord:{
-        id: "1059362574958874634", 
-    },
-    github:{
-        token1: "ghp_glp5HVMRtuOmz6b",
-        token2: "sQrU6hpJNdqo10J2IkmuF"
-    },
-    about:{
-        description: "I'm a 18 years old developer from Turkey. I'm currently working on my own projects and learning new things.",
-    },
-    social:{
-        github: "https://github.com/kalashiexe",
-        instagram: "https://instagram.com/mustafacanyl",
-    },
-    meta:{
-        title: 'My Personal Website',
-        description: 'My Personal Website',
-        theme: '#02060f',
-        lang: 'en',
-        url: 'https://kalashi.me',
-        image: '',
-    },
-    title: 'Kalashi',
-    titles:[
-        {title: 'Home', url: '/', icon: 'fa-house'},
-        {title: 'Projects', url: '/projects' ,icon: 'fa-blog'},
-        {title: 'Blog', url: '/blog' , icon: 'fa-code'},
-    ]
-}
-
+  discord: {
+    id: "942687569693528084",
+  },
+  github: {
+    token1: "ghp_glp5HVMRtuOmz6b",
+    token2: "sQrU6hpJNdqo10J2IkmuF",
+  },
+  about: {
+    description:
+      "I'm a 15 years old noob developer from Ohio.I'm currently working on my own projects and learning new things.",
+  },
+  social: {
+    github: "https://github.com/VacTuzX-dot",
+    instagram: "https://instagram.com/sxu_zl/",
+  },
+  meta: {
+    title: "My Personal Website",
+    description: "Personal Website Homies",
+    theme: "#02060f",
+    lang: "en",
+    url: "https://kalashi.me",
+    image: "",
+  },
+  title: "VacTuzX",
+  titles: [
+    { title: "Home", url: "/", icon: "fa-house" },
+    { title: "Projects", url: "/projects", icon: "fa-blog" },
+    { title: "Blog", url: "/blog", icon: "fa-code" },
+  ],
+};

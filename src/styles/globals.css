@@ -68,7 +68,7 @@
     font-size:14px;
     line-height:1.4;
     outline:0;
-    transition-property:transform,visibility,opacity
+    transition-property:transform,visibility,opacity;
   }
   .tippy-box[data-placement^=top]>.tippy-arrow{
     bottom:0
@@ -159,22 +159,22 @@
   .pulse-avatar-DND {
       background-color: #F04747;
       border-radius: 50%;
-      animation: pulse-dnd 2s infinite;
+      animation: pulse-dnd 1s infinite;
     }
     .pulse-avatar-ONLINE {
       background-color: #43B581;
       border-radius: 50%;
-      animation: pulse-online 2s infinite;
+      animation: pulse-online 1s infinite;
     }
     .pulse-avatar-IDLE {
       background-color: #FAA61A;
       border-radius: 50%;
-      animation: pulse-idle 2s infinite;
+      animation: pulse-idle 1s infinite;
     }
     .pulse-avatar-OFFLINE {
       background-color: #747F8D;
       border-radius: 50%;
-      animation: pulse-offline 2s infinite;
+      animation: pulse-offline 1s infinite;
     }
     
     
