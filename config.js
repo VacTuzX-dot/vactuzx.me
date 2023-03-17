@@ -20,7 +20,7 @@ module.exports = {
     theme: "#02060f",
     lang: "en",
     url: "https://kalashi.me",
-    image: "",
+    image: "https://i.imgur.com/OlsRnlF.jpeg",
   },
   title: "VacTuzX",
   titles: [
