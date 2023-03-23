@@ -8,7 +8,7 @@ module.exports = {
   },
   about: {
     description:
-      "I'm a 15 years old noob developer from Ohio.I'm currently working on my own projects and learning new things.",
+      "I'm a 15 years old noob developer from Ohio. I'm currently working on my own projects and learning new things.",
   },
   social: {
     github: "https://github.com/VacTuzX-dot",
