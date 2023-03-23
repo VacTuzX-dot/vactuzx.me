@@ -1,2 +1,2 @@
 📝 Credits : Kalashiexe
-# vactuzx.me
+# vactuzx.github.io
