@@ -30,16 +30,13 @@ export default function Projects() {
                 <div className="p-5">
                   <div className="flex justify-between items-center">
                     <div className=" items-center">
-               
                       <Image
                         src={project?.link}
                         alt={project?.name}
                         width={400}
-                        height={200}
+                        height={250}
                         className="rounded-md"
                       />
-                    
-                    
                       <div className="text-sm mt-2">
                         <p className="font-bold text-black dark:text-white">
                           {project?.name}

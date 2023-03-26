@@ -1,1 +1,1 @@
-{"c":["webpack"],"r":["pages/index"],"m":["./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?absolutePagePath=D%3A%5CCoding%20Project%5CWORKSTATION%5CPortfolio%5Csrc%5Cpages%5Cindex.jsx&page=%2F!","./src/components/global/about.jsx","./src/components/global/repositories.jsx","./src/components/global/skills.jsx","./src/components/global/spotifyCard.jsx","./src/components/global/vscCard.jsx","./src/pages/index.jsx","./src/utils/country.js"]}
+{"c":["pages/projects","webpack"],"r":[],"m":[]}
