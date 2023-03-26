@@ -34,7 +34,7 @@ export default function About() {
                   className={
                     "rounded-full ring-[3px] ring-indigo  w-44 h-44 "
                   }
-                  src={_me?.data?.discord_user?.avatar?.startsWith && _me.data.discord_user.avatar.startsWith('a_') ? `https://cdn.discordapp.com/avatars/${_me.data.discord_user.id}/${_me.data.discord_user.avatar}.gif` : `https://cdn.discordapp.com/avatars/${_me.data.discord_user.id}/${_me.data.discord_user.avatar}.png`
+                  src={_me?.data.discord_user.avatar.startsWith('a_') ? `https://cdn.discordapp.com/avatars/${_me.data.discord_user.id}/${_me.data.discord_user.avatar}.gif` : `https://cdn.discordapp.com/avatars/${_me.data.discord_user.id}/${_me.data.discord_user.avatar}.png`
                   }
                 />
                 <div className="relative">
