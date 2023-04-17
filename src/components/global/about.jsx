@@ -51,7 +51,7 @@ export default function About() {
               <div className="mt-3 w-full">
                 <div className="flex">
                   <span className=" text-4xl pl-3 font-bold flex-none dark:text-white">
-                    Hey, I'm{" "}
+                    Sup, I'm{" "}
                     <span className="text-indigo">
                       {_me.data.discord_user.username}
                     </span>
