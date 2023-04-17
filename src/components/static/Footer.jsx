@@ -52,7 +52,7 @@ export default function Footer() {
                 className="dark:bg-gray-800/50"
                 >
                   <span className="bg-gray-800/30 dark:text-white  px-3 py-1 font-bold text-sm rounded-md">
-                    v1.2
+                    x.
                   </span>
                 </Tippy>
               </div>
@@ -60,7 +60,7 @@ export default function Footer() {
                 <span className="ml-3 hidden sm:block dark:text-white items-center md:font-medium ">
                   Developed with{" "}
                   <Tippy
-                    content="MySelf"
+                    content="เธอไม่ได้สอนให้ฉันอยู่คนเดียว"
                     placement="top"
                     theme="light"
                     arrow={false}
