@@ -60,7 +60,7 @@ export default function Footer() {
                 <span className="ml-3 hidden sm:block dark:text-white items-center md:font-medium ">
                   Developed with{" "}
                   <Tippy
-                    content="เธอไม่ได้สอนให้ฉันอยู่คนเดียว"
+                    content="Glimpse Of Us"
                     placement="top"
                     theme="light"
                     arrow={false}
