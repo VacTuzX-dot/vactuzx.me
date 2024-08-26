@@ -25,7 +25,7 @@ export default function Header() {
   }, [width]);
 
   return (
-    <nav className="p-1.5 fixed top-1.5 left-0 right-0 z-50 bg-white dark:bg-black/90 shadow-xl">
+    <nav className="p-1.5 fixed top-1 left-0 right-0 z-50 bg-white dark:bg-black/90 shadow-xl">
       <div className="flex justify-between items-center">
         <div className="pl-7 flex items-center space-x-4">
           <a
