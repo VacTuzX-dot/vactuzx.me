@@ -46,10 +46,7 @@ export default function About() {
               <div className="mt-3 w-full">
                 <div className="flex">
                   <span className=" text-4xl pl-3 font-bold flex-none dark:text-white">
-                    Sup, I'm{" "}
-                    <span className="text-indigo">
-                      {_me.data.discord_user.username}
-                    </span>
+                    Hey there, I'm <span className="text-indigo">LEO</span>
                   </span>
                 </div>
                 <p className="pl-3 text-md mt-1 dark:text-white/50 ">
