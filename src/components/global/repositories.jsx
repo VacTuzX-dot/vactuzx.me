@@ -23,7 +23,7 @@ export default function respo() {
               ?.map?.((repo, index) => (
                 <Link href={repo?.html_url} key={index} target="_blank">
                   <div
-                    className="w-full border-[2px] border-[#e2e3e5] dark:border-[#dfdff7] bg-[#fafcfb] dark:bg-[#151516] shadow-lg rounded-md cursor-pointer transition-all duration-300 hover:scale-[1.05] mt-8 pr-2 "
+                    className="w-full border-[2px] border-[#e2e3e5] dark:border-[#1a1a1c] bg-[#fafcfb] dark:bg-[#151516] shadow-lg rounded-md cursor-pointer transition-all duration-300 hover:scale-[1.05] mt-8 pr-2 "
                     key={index}
                   >
                     <motion.div
