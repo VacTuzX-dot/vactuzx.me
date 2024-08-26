@@ -31,6 +31,12 @@ export default function Footer() {
       href: `${config.social.github}`,
       target: "_blank",
     },
+    facebook: {
+      icon: "facebook",
+      alt: "Facebook",
+      href: `${config.social.facebook}`,
+      target: "_blank",
+    },
   };
   return (
     <>
@@ -44,15 +50,15 @@ export default function Footer() {
           <div className="w-full items-center  h-12">
             <div className="flex justify-between items-center">
               <div className="flex items-center md:font-medium">
-                <Tippy 
-                content="Immortal"
-                placement="top"
-                theme="light"
-                arrow={false}
-                className="dark:bg-gray-800/50"
+                <Tippy
+                  content="Immortal"
+                  placement="top"
+                  theme="light"
+                  arrow={false}
+                  className="dark:bg-gray-800/50"
                 >
                   <span className="bg-gray-800/30 dark:text-white  px-3 py-1 font-bold text-sm rounded-md">
-                    x.
+                    LEO
                   </span>
                 </Tippy>
               </div>
@@ -60,7 +66,7 @@ export default function Footer() {
                 <span className="ml-3 hidden sm:block dark:text-white items-center md:font-medium ">
                   Developed with{" "}
                   <Tippy
-                    content="Glimpse Of Us"
+                    content="My Mom"
                     placement="top"
                     theme="light"
                     arrow={false}
@@ -72,7 +78,7 @@ export default function Footer() {
                     />
                   </Tippy>{" "}
                   by{" "}
-                  <a href={config.social.github}>
+                  <a href={config.social.github} target="_blank">
                     <span className="text-indigo font-bold underline">
                       VacTuzX
                     </span>
@@ -89,6 +95,20 @@ export default function Footer() {
               </div>
 
               <div className="flex mr-4 text-md ">
+                <a
+                  className="mr-5"
+                  href={logo.facebook.href}
+                  target={logo.facebook.target}
+                >
+                  <Tippy
+                    content={logo.facebook.alt}
+                    className="dark:bg-gray-800/50"
+                  >
+                    <i
+                      className={`fab fa-${logo.facebook.icon} dark:text-white`}
+                    />
+                  </Tippy>
+                </a>
                 <a
                   className="mr-5"
                   href={logo.discord.href}

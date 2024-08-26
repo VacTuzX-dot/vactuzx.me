@@ -13,24 +13,20 @@ export default function SpotifyCard() {
           transition={{ duration: 1 }}
         >
           <div className="w-full p-0,5 mt-10 rounded-md dark:bg-gradient-to-r from-green-600 to-green-800  bg-green-600">
-           
             <div className="relative">
-             
-
-
               <div className="flex justify-between items-center">
                 <div className="flex items-center">
                   <div className="relative ml-3">
-                  <i class="fa-brands fa-spotify fa-lg flex justify-center absolute bottom-1 top-0  w-6 h-6 rounded-full bg-green-600 items-center text-white"> </i>
-                     <img
-                    src={data?.album_art_url}
-                    alt={data?.song}
-                    className="w-[85px] p-[8px] h-[85px] rounded-xl"
-                  />
-                 
+                    <i class="fa-brands fa-spotify fa-lg flex justify-center absolute bottom-1 top-0  w-6 h-6 rounded-full bg-green-600 items-center text-white">
+                      {" "}
+                    </i>
+                    <img
+                      src={data?.album_art_url}
+                      alt={data?.song}
+                      className="w-[85px] p-[8px] h-[85px] rounded-xl"
+                    />
                   </div>
-                 
-                 
+
                   <div className="ml-5">
                     <div className="shrink-0">
                       <span className="text-white font-bold">{data?.song}</span>

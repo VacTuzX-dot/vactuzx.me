@@ -10,18 +10,12 @@ export default function About() {
   const _weather = weather ? weather : null;
   const [time, setTime] = useState("00:00");
 
- 
   useEffect(() => {
     const interval = setInterval(() => {
       setTime(new Date().toLocaleTimeString());
     }, 1000);
     return () => clearInterval(interval);
   }, []);
-
-  
-  
-
-
 
   return (
     <div className="mt-20 mb-10">
@@ -31,10 +25,11 @@ export default function About() {
             <div className="w-full h-full mb-5   md:flex justify-center items-center">
               <div className="mr-8  flex md:shrink-0 justify-center">
                 <img
-                  className={
-                    "rounded-full ring-[3px] ring-indigo  w-44 h-44 "
-                  }
-                  src={_me?.data.discord_user.avatar.startsWith('a_') ? `https://cdn.discordapp.com/avatars/${_me.data.discord_user.id}/${_me.data.discord_user.avatar}.gif` : `https://cdn.discordapp.com/avatars/${_me.data.discord_user.id}/${_me.data.discord_user.avatar}.png`
+                  className={"rounded-full ring-[3px] ring-indigo  w-44 h-44 "}
+                  src={
+                    _me?.data.discord_user.avatar.startsWith("a_")
+                      ? `https://cdn.discordapp.com/avatars/${_me.data.discord_user.id}/${_me.data.discord_user.avatar}.gif`
+                      : `https://cdn.discordapp.com/avatars/${_me.data.discord_user.id}/${_me.data.discord_user.avatar}.png`
                   }
                 />
                 <div className="relative">
@@ -63,32 +58,29 @@ export default function About() {
                 <div className="ml-3  -mt-3">
                   <div className="text-left items-center justify-center">
                     <div className="mt-4">
-                    <div className="">
-                      <i className="fas fa-clock text-indigo  text-lg  mr-2" />
-                      <span className="text-md text-center font-light dark:text-white/50">
-                      {_weather?.data?.name} {countryselect(_weather?.data?.sys.country)} / {time}
-                      </span>
-
+                      <div className="">
+                        <i className="fas fa-clock text-indigo  text-lg  mr-2" />
+                        <span className="text-md text-center font-light dark:text-white/50">
+                          {_weather?.data?.name}{" "}
+                          {countryselect(_weather?.data?.sys.country)} / {time}
+                        </span>
+                      </div>
+                      <div className="">
+                        <i className="fas fa-cloud-sun-rain text-indigo  text-lg  mr-2" />
+                        <span className="text-md text-center font-light dark:text-white/50">
+                          {_weather?.data?.weather[0].main} /{" "}
+                          {_weather?.data?.main.temp}°C /{" "}
+                          {_weather?.data?.main.humidity}%
+                        </span>
+                      </div>
                     </div>
-                    <div className="">
-                      <i className="fas fa-cloud-sun-rain text-indigo  text-lg  mr-2" />
-                      <span className="text-md text-center font-light dark:text-white/50">
-                        {_weather?.data?.weather[0].main} /{" "}
-                        {_weather?.data?.main.temp}°C /{" "}
-                        {_weather?.data?.main.humidity}%
-                      </span>
-
-                    </div>
-                  
-                    
                   </div>
-                  </div>  
                 </div>
               </div>
             </div>
           </div>
-        ) : null }
+        ) : null}
       </div>
     </div>
   );
-}              
+}

@@ -50,11 +50,9 @@ function MyApp({ Component, pageProps }) {
           <Component {...pageProps} />
           <Footer />
           <div className="layout-color layout-right"></div>
-      <div className="layout-color layout-left"></div>
+          <div className="layout-color layout-left"></div>
         </div>
-        
       </div>
-    
     </>
   );
 }

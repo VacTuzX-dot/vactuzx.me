@@ -1,11 +1,11 @@
-import React from 'react';
-import NProgress from 'nprogress';
+import React from "react";
+import NProgress from "nprogress";
 import Router from "next/router";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 class NextNProgress extends React.Component {
   static defaultProps = {
-    color: 'white',
+    color: "white",
     startPosition: 0.3,
     stopDelayMs: 200,
     height: 3,
@@ -43,7 +43,8 @@ class NextNProgress extends React.Component {
           width: 100%;
           height: ${height}px;
         }
-      `}</style>);
+      `}</style>
+    );
   }
 
   componentDidMount() {
@@ -53,15 +54,15 @@ class NextNProgress extends React.Component {
       NProgress.configure(options);
     }
 
-    Router.events.on('routeChangeStart', this.routeChangeStart);
-    Router.events.on('routeChangeComplete', this.routeChangeEnd);
-    Router.events.on('routeChangeError', this.routeChangeEnd);
+    Router.events.on("routeChangeStart", this.routeChangeStart);
+    Router.events.on("routeChangeComplete", this.routeChangeEnd);
+    Router.events.on("routeChangeError", this.routeChangeEnd);
   }
 
   componentWillUnmount() {
-    Router.events.off('routeChangeStart', this.routeChangeStart);
-    Router.events.off('routeChangeComplete', this.routeChangeEnd);
-    Router.events.off('routeChangeError', this.routeChangeEnd);
+    Router.events.off("routeChangeStart", this.routeChangeStart);
+    Router.events.off("routeChangeComplete", this.routeChangeEnd);
+    Router.events.off("routeChangeError", this.routeChangeEnd);
   }
 }
 

@@ -3,23 +3,24 @@ module.exports = {
     id: "942687569693528084",
   },
   github: {
-    token1: "ghp_glp5HVMRtuOmz6b",
+    token1: "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",
     token2: "sQrU6hpJNdqo10J2IkmuF",
   },
   about: {
     description:
-      "I'm a 15 years old noob developer from Ohio. I'm currently working on my own projects and learning new things.",
+      "Hello, I’m Taweesak Numma, a 17-year-old aspiring developer from Chiang Mai. I’m currently dedicated to personal projects and committed to continually enhancing my skills and knowledge.",
   },
   social: {
     github: "https://github.com/VacTuzX-dot",
-    instagram: "https://instagram.com/sxu_zl/",
+    instagram: "https://www.instagram.com/v4lk.yrieq_1sf3sb.o8lixw/",
+    facebook: "https://www.facebook.com/vactuz/",
   },
   meta: {
     title: "My Personal Website",
     description: "Personal Website Homies",
     theme: "#02060f",
     lang: "en",
-    url: "https://kalashi.me",
+    url: "https://vactuzx-me.vercel.app/",
     image: "https://i.imgur.com/OlsRnlF.jpeg",
   },
   title: "VacTuzX",

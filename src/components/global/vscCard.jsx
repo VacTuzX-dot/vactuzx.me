@@ -7,8 +7,7 @@ export default function VscCard() {
 
   return (
     <>
-      {data ?
-      (
+      {data ? (
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -17,18 +16,16 @@ export default function VscCard() {
         >
           <div className="w-full  p-1 mt-3 rounded-md dark:bg-gradient-to-r from-blue-600 to-blue-900 bg-blue-600">
             <div className="relative">
-             
               <div className="flex justify-between items-center">
                 <div className="flex items-center">
                   <div className="relative ml-2">
-
-                  <img
-                    src={`https://cdn.discordapp.com/app-assets/${data?.application_id}/${data?.assets?.large_image}.png`}
-                    alt=""
-                    className="w-[85px] p-[8px] h-[85px] rounded-xl"
-                  />
+                    <img
+                      src={`https://cdn.discordapp.com/app-assets/${data?.application_id}/${data?.assets?.large_image}.png`}
+                      alt=""
+                      className="w-[85px] p-[8px] h-[85px] rounded-xl"
+                    />
                   </div>
-                  
+
                   <div className="ml-5">
                     <div className="shrink-0">
                       <span className="text-white font-bold">

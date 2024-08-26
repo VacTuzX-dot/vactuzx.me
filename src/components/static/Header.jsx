@@ -25,9 +25,9 @@ export default function Header() {
   }, [width]);
 
   return (
-    <nav className="p-1.5 fixed top-0 left-0 right-0 z-50 bg-white dark:bg-black/90 shadow-xl">
+    <nav className="p-1.5 fixed top-1.5 left-0 right-0 z-50 bg-white dark:bg-black/90 shadow-xl">
       <div className="flex justify-between items-center">
-        <div className="flex items-center space-x-4">
+        <div className="pl-7 flex items-center space-x-4">
           <a
             href="/"
             className="text-2xl font-bold text-gray-800 dark:text-gray-100"
@@ -45,28 +45,25 @@ export default function Header() {
             )}
           </button>
         </div>
-        <div className="space-x-7 hidden sm:flex">
+        <div className="space-x-20 hidden sm:flex">
           {config.titles.map((title, index) => (
-            <Link href={title.url.toLowerCase()} key={index}>
-              <a
-                className={` text-lg font-light translation duration-300 ${
-                  router.pathname === title.url
-                    ? "text-indigo"
-                    : "text-black/75 hover:text-indigo dark:text-white/50 dark:hover:text-white"
-                } `}
-              >
-                {title.title}
-              </a>
+            <Link
+              href={title.url.toLowerCase()}
+              key={index}
+              className={`text-xl font-bold translation duration-300 ${
+                router.pathname === title.url
+                  ? "text-indigo"
+                  : "text-black/75 hover:text-indigo dark:text-white/50 dark:hover:text-white"
+              }`}
+            >
+              {title.title}
             </Link>
           ))}
         </div>
 
-        <div className="flex items-center">
+        <div className="pr-7 flex items-center">
           <button className="bg-indigo dark:bg-indigo/75 font-medium p-2 w-32 translation duration-300 hover:bg-indigo/60 rounded-md text-white">
-            <a
-              href={`https://discord.com/users/` + config.discord.id}
-              target="_blank"
-            >
+            <a href={`https://www.facebook.com/vactuz/`} target="_blank">
               Contact
             </a>
           </button>
@@ -76,12 +73,10 @@ export default function Header() {
           <div className="border-[1px] border-[#e2e3e5] dark:border-[#1a1a1c]  bg-[#fafcfb] dark:bg-[#151516] w-full mx-auto h-16 px-10 py-2 flex justify-between text-gray-font left-0 fixed bottom-0 shadow-lg z-40 border-t border-gray-99">
             {config.titles.map((title, index) => (
               <Link href={title.url.toLowerCase()} key={index}>
-                <a>
-                  <span className="px-2 py-1 cursor-pointer hover:bg-back/25 dark:text-white text-black dark:hover:bg-indigo/25  text-sm rounded-md font-light  flex flex-col items-center text-center">
-                    <i className={"w-8 p-1 fa-regular " + title.icon}></i>
-                    <span className="mx-1 font-roboto">{title.title}</span>
-                  </span>
-                </a>
+                <span className="px-2 py-1 cursor-pointer hover:bg-back/25 dark:text-white text-black dark:hover:bg-indigo/25  text-sm rounded-md font-light  flex flex-col items-center text-center">
+                  <i className={"w-8 p-1 fa-regular " + title.icon}></i>
+                  <span className="mx-1 font-roboto">{title.title}</span>
+                </span>
               </Link>
             ))}
           </div>

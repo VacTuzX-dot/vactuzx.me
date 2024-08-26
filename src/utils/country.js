@@ -107,6 +107,6 @@ const countryselect = (country) => {
     default:
       return "Unknown";
   }
-  };
+};
 
-  module.exports = countryselect;
+module.exports = countryselect;

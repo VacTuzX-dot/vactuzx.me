@@ -7,17 +7,17 @@ export default function Teach() {
 
   return (
     <div className="mt-16">
-      
       <div className="text-2xl font-bold flex items-center dark:text-white  ">
         <div className="w-10 h-10  rounded-full items-center flex justify-center mr-2">
           <i className="fas fa-book text-indigo text-3xl" />
-        </div>Languages and Tools
-      </div> 
+        </div>
+        Languages and Tools
+      </div>
       <div className="flex mt-5 flex-wrap">
         {data ? (
           data.map((item, index) => (
             <div
-              className="w-full cursor-pointer transition-all duration-200 hover:shadow-md hover:scale-[1.02] md:w-1/2 lg:w-1/3 mt-2 pr-2"
+              className="w-full cursor-pointer transition-all duration-300 hover:scale-[1.05] md:w-1/2 lg:w-1/3 mt-2 pr-3"
               key={index}
             >
               <motion.div
@@ -27,7 +27,7 @@ export default function Teach() {
                 key={index}
                 transition={{ duration: 0.5 }}
               >
-                <div className="border-[1px] border-[#e2e3e5] dark:border-[#1a1a1c]  bg-[#fafcfb] dark:bg-[#151516] shadow-lg rounded-lg p-2">
+                <div className="border-[2px] border-[#e2e3e5] dark:border-[#1a1a1c]  bg-[#fafcfb] dark:bg-[#151516] shadow-lg rounded-lg p-2">
                   <div className="flex justify-between items-center">
                     <Image
                       className="w-8 h-8 rounded-md mr-4"
