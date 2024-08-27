@@ -1,3 +1,4 @@
+require("dotenv").config();
 module.exports = {
   discord: {
     id: "942687569693528084",
