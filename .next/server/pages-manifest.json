@@ -4,7 +4,6 @@
   "/_document": "pages/_document.js",
   "/": "pages/index.js",
   "/api/v1/me": "pages/api/v1/me.js",
-  "/projects": "pages/projects.js",
   "/api/v1/weather": "pages/api/v1/weather.js",
   "/api/v1/teach": "pages/api/v1/teach.js",
   "/api/v1/repos": "pages/api/v1/repos.js"

@@ -3,8 +3,8 @@ module.exports = {
     id: "942687569693528084",
   },
   github: {
-    token1: "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",
-    token2: "sQrU6hpJNdqo10J2IkmuF",
+    token1: process.env.GITHUB_TOKEN1,
+    token2: process.env.GITHUB_TOKEN2,
   },
   about: {
     description:
