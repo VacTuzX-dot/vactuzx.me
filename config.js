@@ -3,7 +3,7 @@ module.exports = {
     id: "942687569693528084",
   },
   github: {
-    token1: "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",
+    token1: "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",
     token2: "sQrU6hpJNdqo10J2IkmuF",
   },
   about: {
