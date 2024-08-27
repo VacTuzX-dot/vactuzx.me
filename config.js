@@ -18,11 +18,11 @@ module.exports = {
   },
   meta: {
     title: "My Personal Website",
-    description: "Personal Website Homies",
+    description: "Leo Personal Website",
     theme: "#02060f",
     lang: "en",
     url: "https://vactuzx-me.vercel.app/",
-    image: "https://i.imgur.com/OlsRnlF.jpeg",
+    image: "https://i.imgur.com/RJgxLfV.png",
   },
   title: "VacTuzX",
   titles: [
