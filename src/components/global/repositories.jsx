@@ -7,7 +7,7 @@ export default function respo() {
   const data = github ? github.data : [];
   return (
     <div className="w-full h-full">
-      <div className="text-2xl font-bold flex items-center text-black dark:text-white">
+      <div className="text-2xl font-bold flex items-center text-black dark:text-white  ">
         <div className="w-10 h-10 items-center flex justify-center mr-2">
           <i className="ml-2 fab text-indigo z-index-2 fa-github text-4xl mr-2" />
         </div>

@@ -13,6 +13,7 @@ export default function Teach() {
         </div>
         Languages and Tools
       </div>
+
       <div className="flex mt-5 flex-wrap">
         {data ? (
           data.map((item, index) => (
@@ -30,13 +31,13 @@ export default function Teach() {
                 <div className="border-[2px] border-[#e2e3e5] dark:border-[#1a1a1c]  bg-[#fafcfb] dark:bg-[#151516] shadow-lg rounded-lg p-2">
                   <div className="flex justify-between items-center">
                     <Image
-                      className="w-8 h-8 rounded-md mr-4"
+                      className="w-8 h-8 rounded-sm mr-4"
                       src={item.src}
                       alt={item.name}
                       width={30}
                       height={30}
                     />
-                    <div className="text-sm  justify-end">
+                    <div className="text-md  justify-end">
                       <p className="font-bold text-black dark:text-white">
                         {item.name}
                       </p>

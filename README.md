@@ -4,7 +4,7 @@ Credits : Kalashiexe
 
 ## Installation
 
-```bash 
+```bash
 git clone https://github.com/VacTuzX-dot/vactuzx.me
 ```
 
