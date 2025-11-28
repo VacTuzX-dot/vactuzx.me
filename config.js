@@ -9,7 +9,7 @@ module.exports = {
   },
   about: {
     description:
-      "My name is Taweesak Numma, and I'm a 17-year-old developer based in Chiang Mai. I'm excited about exploring my coding skills through personal projects and constantly striving to improve my knowledge.",
+      "My name is Taweesak Numma, and I'm a 18-year-old developer based in Chiang Mai. I'm excited about exploring my coding skills through personal projects and constantly striving to improve my knowledge.",
   },
   social: {
     github: "https://github.com/VacTuzX-dot",
