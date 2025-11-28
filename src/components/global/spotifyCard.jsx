@@ -25,13 +25,25 @@ export default function SpotifyCard() {
           },
     [liteMotion]
   );
+  const interactiveProps = useMemo(
+    () =>
+      liteMotion
+        ? {}
+        : {
+            whileHover: { y: -4, scale: 1.01 },
+            whileTap: { scale: 0.99 },
+          },
+    [liteMotion]
+  );
 
   if (!track) return null;
 
   return (
-    <motion.div {...motionProps} className="mt-8">
-      <div className="w-full rounded-2xl border border-emerald-500/40 bg-gradient-to-r from-emerald-600 via-emerald-700 to-emerald-800 text-white shadow-lg shadow-emerald-500/20 p-5 sm:p-6">
-        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6">
+    <motion.div {...motionProps} {...interactiveProps} className="mt-8">
+      <div className="relative overflow-hidden w-full rounded-2xl border border-emerald-500/40 bg-gradient-to-r from-emerald-600 via-emerald-700 to-emerald-800 text-white shadow-lg shadow-emerald-500/20 p-5 sm:p-6">
+        <div className="absolute -top-12 -right-6 w-24 h-24 bg-emerald-400/15 blur-3xl rounded-full" />
+        <div className="absolute -bottom-10 -left-10 w-28 h-28 bg-teal-300/10 blur-3xl rounded-full" />
+        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6 relative z-10">
           <div className="relative">
             <div className="absolute -top-2 -left-2 w-8 h-8 rounded-full bg-emerald-500 blur-xl opacity-60" />
             <img
@@ -39,7 +51,7 @@ export default function SpotifyCard() {
               alt={track?.song}
               loading="lazy"
               decoding="async"
-              className="w-20 h-20 sm:w-24 sm:h-24 rounded-xl shadow-md object-cover relative z-10"
+              className="w-20 h-20 sm:w-24 sm:h-24 rounded-xl shadow-md object-cover relative z-10 transition-transform duration-200"
             />
           </div>
 

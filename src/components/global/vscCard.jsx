@@ -83,6 +83,16 @@ export default function VscCard() {
           },
     [liteMotion]
   );
+  const interactiveProps = useMemo(
+    () =>
+      liteMotion
+        ? {}
+        : {
+            whileHover: { y: -4, scale: 1.01 },
+            whileTap: { scale: 0.99 },
+          },
+    [liteMotion]
+  );
   const activity = useMemo(
     () => pickPrimaryActivity(me?.data?.activities),
     [me?.data?.activities]
@@ -105,13 +115,16 @@ export default function VscCard() {
     event.currentTarget.onerror = null;
     event.currentTarget.src = FALLBACK_IMAGE;
   }, []);
+  const livePulseClass = liteMotion ? "" : "animate-pulse";
 
   if (!activity) return null;
 
   return (
-    <motion.div {...motionProps} className="mt-4">
-      <div className="w-full rounded-2xl border border-blue-500/40 bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 text-white shadow-lg shadow-blue-500/20 p-5 sm:p-6">
-        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6">
+    <motion.div {...motionProps} {...interactiveProps} className="mt-4">
+      <div className="relative overflow-hidden w-full rounded-2xl border border-blue-500/40 bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 text-white shadow-lg shadow-blue-500/20 p-5 sm:p-6">
+        <div className="absolute -top-10 -right-10 w-28 h-28 bg-blue-400/20 blur-3xl rounded-full" />
+        <div className="absolute -bottom-12 -left-6 w-24 h-24 bg-cyan-300/10 blur-3xl rounded-full" />
+        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6 relative z-10">
           {activityImage ? (
             <img
               src={activityImage}
@@ -119,7 +132,7 @@ export default function VscCard() {
               loading="lazy"
               decoding="async"
               onError={handleImageError}
-              className="w-16 h-16 sm:w-20 sm:h-20 rounded-xl shadow-md object-cover"
+              className="w-16 h-16 sm:w-20 sm:h-20 rounded-xl shadow-md object-cover transition-transform duration-200"
             />
           ) : (
             <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-xl shadow-md bg-white/10 flex items-center justify-center text-2xl">
@@ -137,8 +150,8 @@ export default function VscCard() {
             <p className="text-sm text-blue-100/90">{activity?.state}</p>
           </div>
 
-          <span className="inline-flex items-center px-3 py-1 rounded-full bg-white/10 backdrop-blur text-white text-sm font-semibold">
-            <i className="fas fa-circle text-green-300 mr-2" />
+          <span className="inline-flex items-center px-3 py-1 rounded-full bg-white/10 backdrop-blur text-white text-sm font-semibold shadow-sm shadow-blue-500/20 border border-white/10">
+            <i className={`fas fa-circle text-green-300 mr-2 ${livePulseClass}`} />
             Live
           </span>
         </div>
