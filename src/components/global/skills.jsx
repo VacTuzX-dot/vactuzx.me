@@ -1,9 +1,25 @@
+import { useMemo } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import swr from "../../lib/swr";
+import useLiteMotion from "../../hooks/useLiteMotion";
 export default function Teach() {
   const { data: tech } = swr("/api/v1/teach");
   const data = tech ? tech : [];
+  const liteMotion = useLiteMotion();
+
+  const baseMotionProps = useMemo(
+    () =>
+      liteMotion
+        ? { initial: false, animate: { opacity: 1, y: 0 }, exit: { opacity: 0, y: -6 } }
+        : { initial: { opacity: 0, y: 8 }, animate: { opacity: 1, y: 0 }, exit: { opacity: 0, y: -8 } },
+    [liteMotion]
+  );
+
+  const baseTransition = useMemo(
+    () => (liteMotion ? { duration: 0.15 } : { duration: 0.25 }),
+    [liteMotion]
+  );
 
   return (
     <div className="mt-16">
@@ -23,10 +39,10 @@ export default function Teach() {
         {data
           ? data.map((item, index) => (
               <motion.div
-                initial={{ opacity: 0, y: 8 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -8 }}
-                transition={{ duration: 0.25, delay: index * 0.02 }}
+                {...baseMotionProps}
+                transition={
+                  liteMotion ? baseTransition : { ...baseTransition, delay: index * 0.02 }
+                }
                 key={index}
                 className="border border-gray-200/70 dark:border-gray-700/60 bg-white/70 dark:bg-white/5 rounded-xl p-3 sm:p-4 shadow-sm shadow-indigo-500/5 hover:-translate-y-1 hover:shadow-md transition-all duration-200"
               >

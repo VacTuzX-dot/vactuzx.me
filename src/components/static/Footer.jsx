@@ -1,10 +1,25 @@
-import { motion, AnimatePresence } from "framer-motion";
-import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import { useState } from "react";
 import Tippy from "@tippyjs/react";
 import config from "../../../config";
+import useLiteMotion from "../../hooks/useLiteMotion";
 
 export default function Footer() {
   const [colors, setColors] = useState("text-red-500");
+  const liteMotion = useLiteMotion();
+  const motionProps = liteMotion
+    ? {
+        initial: false,
+        animate: { opacity: 1 },
+        exit: { opacity: 0 },
+        transition: { duration: 0.15 },
+      }
+    : {
+        initial: { opacity: 0 },
+        animate: { opacity: 1 },
+        exit: { opacity: 0 },
+        transition: { duration: 0.6 },
+      };
   const randomcolor = () => {
     const color = [
       "text-red-500",
@@ -40,12 +55,7 @@ export default function Footer() {
   };
   return (
     <>
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        transition={{ duration: 0.6 }}
-      >
+      <motion.div {...motionProps}>
         <div className="p-5 mt-10 sm:mb-0 mb-16 ">
           <div className="w-full items-center  h-12">
             <div className="flex justify-between items-center">

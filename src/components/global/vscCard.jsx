@@ -1,5 +1,7 @@
+import { useCallback, useMemo } from "react";
 import { motion } from "framer-motion";
-import swr from "../../lib/swr";
+import useMe from "../../hooks/useMe";
+import useLiteMotion from "../../hooks/useLiteMotion";
 
 const FALLBACK_IMAGE = "https://cdn.discordapp.com/embed/avatars/0.png";
 
@@ -44,42 +46,79 @@ function getActivityImage(activity) {
 }
 
 function pickPrimaryActivity(activities = []) {
-  const filtered = activities.filter((activity) => activity?.type !== 4);
+  let chosen = null;
 
-  return filtered.sort(
-    (a, b) => (b?.created_at || 0) - (a?.created_at || 0)
-  )[0];
+  for (const activity of activities) {
+    if (!activity || activity.type === 4) continue;
+
+    const currentCreatedAt = activity.created_at ?? 0;
+    const chosenCreatedAt = chosen?.created_at ?? 0;
+
+    if (!chosen || currentCreatedAt > chosenCreatedAt) {
+      chosen = activity;
+    }
+  }
+
+  return chosen;
 }
 
 export default function VscCard() {
-  const { data: me } = swr("api/v1/me", { refreshInterval: 15000 });
-  const activity = pickPrimaryActivity(me?.data?.activities);
+  const { data: me } = useMe();
+  const liteMotion = useLiteMotion();
+
+  const motionProps = useMemo(
+    () =>
+      liteMotion
+        ? {
+            initial: false,
+            animate: { opacity: 1, y: 0 },
+            exit: { opacity: 0, y: -4 },
+            transition: { duration: 0.15 },
+          }
+        : {
+            initial: { opacity: 0, y: 6 },
+            animate: { opacity: 1, y: 0 },
+            exit: { opacity: 0, y: -6 },
+            transition: { duration: 0.4 },
+          },
+    [liteMotion]
+  );
+  const activity = useMemo(
+    () => pickPrimaryActivity(me?.data?.activities),
+    [me?.data?.activities]
+  );
+
+  const activityImage = useMemo(
+    () => (activity ? getActivityImage(activity) : null),
+    [activity]
+  );
+
+  const label = useMemo(() => {
+    if (!activity) return null;
+
+    return activity.name
+      ? `${ACTIVITY_LABELS[activity.type] || "Doing"} ${activity.name}`
+      : ACTIVITY_LABELS[activity.type] || "Discord activity";
+  }, [activity]);
+
+  const handleImageError = useCallback((event) => {
+    event.currentTarget.onerror = null;
+    event.currentTarget.src = FALLBACK_IMAGE;
+  }, []);
 
   if (!activity) return null;
 
-  const activityImage = getActivityImage(activity);
-  const label = activity.name
-    ? `${ACTIVITY_LABELS[activity.type] || "Doing"} ${activity.name}`
-    : ACTIVITY_LABELS[activity.type] || "Discord activity";
-
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 6 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -6 }}
-      transition={{ duration: 0.4 }}
-      className="mt-4"
-    >
+    <motion.div {...motionProps} className="mt-4">
       <div className="w-full rounded-2xl border border-blue-500/40 bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 text-white shadow-lg shadow-blue-500/20 p-5 sm:p-6">
         <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6">
           {activityImage ? (
             <img
               src={activityImage}
               alt={activity?.name || "Discord activity"}
-              onError={(event) => {
-                event.currentTarget.onerror = null;
-                event.currentTarget.src = FALLBACK_IMAGE;
-              }}
+              loading="lazy"
+              decoding="async"
+              onError={handleImageError}
               className="w-16 h-16 sm:w-20 sm:h-20 rounded-xl shadow-md object-cover"
             />
           ) : (

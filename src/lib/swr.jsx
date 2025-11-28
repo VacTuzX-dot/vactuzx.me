@@ -1,6 +1,6 @@
 import useSWR from "swr";
 
-const DEFAULT_REFRESH_INTERVAL = 15000;
+const DEFAULT_REFRESH_INTERVAL = 0; // Disable polling unless explicitly requested.
 const DEFAULT_DEDUPING_INTERVAL = 5000;
 
 const fetcher = async (href) => {

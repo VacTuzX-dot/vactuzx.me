@@ -1,6 +1,8 @@
+import { useMemo } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import swr from "../../lib/swr";
+import useLiteMotion from "../../hooks/useLiteMotion";
 
 const formatNumber = (value) =>
   new Intl.NumberFormat("en", { notation: "compact" }).format(value || 0);
@@ -27,12 +29,35 @@ export default function Repositories() {
     isLoading,
     mutate,
   } = swr("/api/v1/repos", { refreshInterval: 120000 });
+  const liteMotion = useLiteMotion();
 
-  const repos =
-    github?.data
-      ?.filter((repo) => !repo.fork)
-      ?.sort((a, b) => b.stargazers_count - a.stargazers_count)
-      ?.slice(0, 9) || [];
+  const repos = useMemo(() => {
+    if (!github?.data) return [];
+
+    return github.data
+      .filter((repo) => !repo.fork)
+      .slice()
+      .sort((a, b) => b.stargazers_count - a.stargazers_count)
+      .slice(0, 9);
+  }, [github]);
+
+  const cardMotionProps = useMemo(
+    () =>
+      liteMotion
+        ? {
+            initial: false,
+            animate: { opacity: 1, y: 0 },
+            exit: { opacity: 0, y: -8 },
+            transition: { duration: 0.15 },
+          }
+        : {
+            initial: { opacity: 0, y: 10 },
+            animate: { opacity: 1, y: 0 },
+            exit: { opacity: 0, y: -10 },
+            transition: { duration: 0.3 },
+          },
+    [liteMotion]
+  );
 
   return (
     <div className="w-full h-full">
@@ -77,10 +102,7 @@ export default function Repositories() {
           {repos.map((repo) => (
             <Link href={repo.html_url} key={repo.id} target="_blank" rel="noreferrer">
               <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.3 }}
+                {...cardMotionProps}
                 className="w-full border-[2px] border-[#e2e3e5] dark:border-[#1a1a1c] bg-[#fafcfb] dark:bg-[#151516] shadow-lg rounded-md cursor-pointer transition-all duration-200 hover:-translate-y-1 hover:shadow-xl p-4 flex flex-col gap-3"
               >
                 <div className="flex items-start justify-between gap-2">

@@ -1,22 +1,25 @@
 import config from "../../../config";
 import swr from "../../lib/swr";
 import countryselect from "../../utils/country";
-import { useEffect, useState } from "react";
+import useMe from "../../hooks/useMe";
+import { useEffect, useMemo, useState } from "react";
 export default function About() {
-  const { data: me, isLoading: isLoadingMe } = swr("api/v1/me", {
-    refreshInterval: 15000,
-  });
+  const { data: me, isLoading: isLoadingMe } = useMe();
   const _me = me ? me : null;
   const { data: weather, isLoading: isLoadingWeather } = swr("/api/v1/weather");
   const _weather = weather ? weather : null;
-  const [time, setTime] = useState("00:00");
+  const timeFormatter = useMemo(
+    () => new Intl.DateTimeFormat([], { hour: "2-digit", minute: "2-digit" }),
+    []
+  );
+  const [time, setTime] = useState(() => timeFormatter.format(new Date()));
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setTime(new Date().toLocaleTimeString());
-    }, 1000);
+    const tick = () => setTime(timeFormatter.format(new Date()));
+    tick();
+    const interval = setInterval(tick, 30000);
     return () => clearInterval(interval);
-  }, []);
+  }, [timeFormatter]);
 
   return (
     <div className="mt-16 mb-10">
@@ -37,6 +40,8 @@ export default function About() {
                               : `https://cdn.discordapp.com/avatars/${_me?.data?.discord_user?.id}/${_me?.data?.discord_user?.avatar}.png`
                           }
                           alt="Discord avatar"
+                          loading="lazy"
+                          decoding="async"
                         />
                       </div>
                     </div>

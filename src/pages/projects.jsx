@@ -1,19 +1,48 @@
+import { useMemo } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import swr from "../lib/swr";
+import useLiteMotion from "../hooks/useLiteMotion";
 
 export default function Projects() {
   const { data: projects, isLoading } = swr("/api/v1/project");
   const data = projects || [];
+  const liteMotion = useLiteMotion();
+
+  const containerMotionProps = useMemo(
+    () =>
+      liteMotion
+        ? {
+            initial: false,
+            animate: { opacity: 1, y: 0 },
+            exit: { opacity: 0, y: -4 },
+            transition: { duration: 0.15 },
+          }
+        : {
+            initial: { opacity: 0, y: 6 },
+            animate: { opacity: 1, y: 0 },
+            exit: { opacity: 0, y: -6 },
+            transition: { duration: 0.4 },
+          },
+    [liteMotion]
+  );
+
+  const cardMotionProps = useMemo(
+    () =>
+      liteMotion
+        ? { initial: false, animate: { opacity: 1, y: 0 } }
+        : { initial: { opacity: 0, y: 10 }, animate: { opacity: 1, y: 0 } },
+    [liteMotion]
+  );
+
+  const cardTransitionBase = useMemo(
+    () => (liteMotion ? { duration: 0.18 } : { duration: 0.25 }),
+    [liteMotion]
+  );
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 6 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -6 }}
-      transition={{ duration: 0.4 }}
-    >
+    <motion.div {...containerMotionProps}>
       <div className="mt-6 sm:mt-10 space-y-4 sm:space-y-6">
         <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-2">
           <div>
@@ -48,9 +77,12 @@ export default function Projects() {
           {data.map?.((project, index) => (
             <motion.div
               key={project?.name || index}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.25, delay: index * 0.03 }}
+              {...cardMotionProps}
+              transition={
+                liteMotion
+                  ? cardTransitionBase
+                  : { ...cardTransitionBase, delay: index * 0.03 }
+              }
               className="group rounded-2xl border border-gray-200/70 dark:border-gray-800 bg-white/80 dark:bg-white/5 shadow-sm shadow-indigo-500/5 overflow-hidden hover:shadow-lg hover:-translate-y-1 transition-all duration-200"
             >
               <Link href={project?.html_url || "#"} target="_blank">
