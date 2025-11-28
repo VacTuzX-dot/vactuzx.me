@@ -2,7 +2,15 @@
 
 const nextConfig = {
   reactStrictMode: true,
-
+  compress: true,
+  poweredByHeader: false,
+  experimental: {
+    optimizePackageImports: ["framer-motion", "@tippyjs/react"],
+  },
+  compiler: {
+    removeConsole:
+      process.env.NODE_ENV === "production" ? { exclude: ["error"] } : false,
+  },
   images: {
     domains: [
       "/",

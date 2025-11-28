@@ -34,7 +34,7 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <>
-      <div className="dark:bg-back bg-[#f3f4f6] min-h-screen border-t-indigo border-t-4 scrollbar-thin scrollbar-thumb-indigo  h-screen overflow-y-scroll">
+      <div className="min-h-screen bg-gradient-to-b from-[#f8fafc] via-white to-[#eef2ff] dark:from-[#06070b] dark:via-[#090b12] dark:to-[#0d1019] text-slate-900 dark:text-slate-100">
         <Head>
           <title>
             {title ? title + " | " + config?.title : "404 | " + config?.title}
@@ -45,9 +45,11 @@ function MyApp({ Component, pageProps }) {
           />
           <meta name="description" content={config.meta.description} />
         </Head>
-        <div className="mx-auto max-w-5xl ">
+        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-8 sm:py-10 space-y-10">
           <Header />
-          <Component {...pageProps} />
+          <main className="space-y-8 sm:space-y-10">
+            <Component {...pageProps} />
+          </main>
           <Footer />
           <div className="layout-color layout-right"></div>
           <div className="layout-color layout-left"></div>

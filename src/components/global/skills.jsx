@@ -1,4 +1,4 @@
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import Image from "next/image";
 import swr from "../../lib/swr";
 export default function Teach() {
@@ -7,49 +7,44 @@ export default function Teach() {
 
   return (
     <div className="mt-16">
-      <div className="text-2xl font-bold flex items-center dark:text-white  ">
-        <div className="w-10 h-10  rounded-full items-center flex justify-center mr-2">
-          <i className="fas fa-book text-indigo text-3xl" />
+      <div className="flex items-center justify-between gap-2">
+        <div className="text-2xl font-bold flex items-center dark:text-white">
+          <div className="w-10 h-10 rounded-full items-center flex justify-center mr-2 bg-indigo-100 dark:bg-indigo-900/50 text-indigo">
+            <i className="fas fa-book text-xl" />
+          </div>
+          Languages &amp; Tools
         </div>
-        Languages and Tools
+        <span className="text-sm text-gray-600 dark:text-gray-300">
+          {data?.length || 0} items
+        </span>
       </div>
 
-      <div className="flex mt-5 flex-wrap">
-        {data ? (
-          data.map((item, index) => (
-            <div
-              className="w-full cursor-pointer transition-all duration-300 hover:scale-[1.05] md:w-1/2 lg:w-1/3 mt-2 pr-3"
-              key={index}
-            >
+      <div className="mt-6 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 sm:gap-4">
+        {data
+          ? data.map((item, index) => (
               <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -8 }}
+                transition={{ duration: 0.25, delay: index * 0.02 }}
                 key={index}
-                transition={{ duration: 0.5 }}
+                className="border border-gray-200/70 dark:border-gray-700/60 bg-white/70 dark:bg-white/5 rounded-xl p-3 sm:p-4 shadow-sm shadow-indigo-500/5 hover:-translate-y-1 hover:shadow-md transition-all duration-200"
               >
-                <div className="border-[2px] border-[#e2e3e5] dark:border-[#1a1a1c]  bg-[#fafcfb] dark:bg-[#151516] shadow-lg rounded-lg p-2">
-                  <div className="flex justify-between items-center">
-                    <Image
-                      className="w-8 h-8 rounded-sm mr-4"
-                      src={item.src}
-                      alt={item.name}
-                      width={30}
-                      height={30}
-                    />
-                    <div className="text-md  justify-end">
-                      <p className="font-bold text-black dark:text-white">
-                        {item.name}
-                      </p>
-                    </div>
-                  </div>
+                <div className="flex items-center gap-3">
+                  <Image
+                    className="rounded-md"
+                    src={item.src}
+                    alt={item.name}
+                    width={28}
+                    height={28}
+                  />
+                  <p className="font-semibold text-sm sm:text-base text-gray-900 dark:text-white leading-snug">
+                    {item.name}
+                  </p>
                 </div>
               </motion.div>
-            </div>
-          ))
-        ) : (
-          <></>
-        )}
+            ))
+          : null}
       </div>
     </div>
   );

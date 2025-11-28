@@ -6,16 +6,12 @@ import GithubCard from "../components/global/repositories";
 
 export default function Home() {
   return (
-    <div>
-      <div className="mt-10 px-5">
-        <About />
-        <SpotifyCard />
-        <VscCard />
-        <div className="mt-10">
-          <GithubCard />
-          <Teach />
-        </div>
-      </div>
+    <div className="space-y-8 sm:space-y-10">
+      <About />
+      <SpotifyCard />
+      <VscCard />
+      <GithubCard />
+      <Teach />
     </div>
   );
 }
