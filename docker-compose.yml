@@ -1,5 +1,4 @@
 version: "3.9"
-
 services:
   web:
     build: .
@@ -9,5 +8,37 @@ services:
     environment:
       - NODE_ENV=production
       - PORT=3000
+    expose:
+      - "3000" # expose container internal port (ไม่ map to host)
+    networks:
+      - webnet
+
+  nginx:
+    image: nginx:latest
+    restart: unless-stopped
     ports:
-      - "3000:3000"
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d
+      - ./certs:/etc/letsencrypt # ถ้าทำ SSL certificate
+    networks:
+      - webnet
+    depends_on:
+      - web
+
+  certbot:
+    image: certbot/certbot
+    volumes:
+      - ./certs:/etc/letsencrypt
+      - ./certs:/var/lib/letsencrypt
+    entrypoint: >
+      sh -c "certbot certonly --webroot --webroot-path=/var/www/html 
+             -d meo.in.th -d www.meo.in.th --email your@meo.in.th --agree-tos --noninteractive 
+             && cp -R /etc/letsencrypt /etc/letsencrypt"  # ตัวอย่าง
+    networks:
+      - webnet
+
+networks:
+  webnet:
+    driver: bridge
