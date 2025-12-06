@@ -9,7 +9,7 @@ services:
       - NODE_ENV=production
       - PORT=3000
     expose:
-      - "3000" # expose container internal port (ไม่ map to host)
+      - "3000"
     networks:
       - webnet
 
@@ -21,7 +21,7 @@ services:
       - "443:443"
     volumes:
       - ./nginx/conf.d:/etc/nginx/conf.d
-      - ./certs:/etc/letsencrypt # ถ้าทำ SSL certificate
+      - ./certs:/etc/letsencrypt
     networks:
       - webnet
     depends_on:
@@ -34,8 +34,8 @@ services:
       - ./certs:/var/lib/letsencrypt
     entrypoint: >
       sh -c "certbot certonly --webroot --webroot-path=/var/www/html 
-             -d meo.in.th -d www.meo.in.th --email your@meo.in.th --agree-tos --noninteractive 
-             && cp -R /etc/letsencrypt /etc/letsencrypt"  # ตัวอย่าง
+             -d meo.in.th --email taweesaknumma@gmail.com --agree-tos --noninteractive 
+             && cp -R /etc/letsencrypt /etc/letsencrypt"
     networks:
       - webnet
 
